@@ -96,10 +96,12 @@ a.cap:active { transform: translateY(5px); filter: brightness(0.93); box-shadow:
 @keyframes twk { 0%, 70%, 100% { opacity: 1; } 80% { opacity: 0.35; } }
 footer { position: relative; z-index: 1; margin-top: 44px; font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-style: italic; font-weight: 800; font-size: 13px; padding: 10px 16px calc(26px + env(safe-area-inset-bottom, 0px)); text-align: center; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 2.5px var(--ink); }
 footer a { color: #fff; }
-/* Wide windows (squarer than 4:5): the tall shot fits the height, whole,
-   with blurred water of its own at the sides; the column stays under the logo. */
-@media (min-aspect-ratio: 4/5) {
-  :root { --below-logo: 38vh; }
+/* Landscape windows (desktops, the open Duo): the tall shot fits the height,
+   whole, with blurred water of its own at the sides; the column stays under
+   the logo and inside the shot. Portrait screens of every shape, including
+   the Duo's squarer cover and in-app browsers, fill with it instead. */
+@media (min-aspect-ratio: 1/1) {
+  :root { --below-logo: 38vh; --col: min(380px, 50vh); }
   .water #poster, .water video { object-fit: contain; object-position: center center; }
   .water .bg { display: block; }
 }
