@@ -57,7 +57,7 @@ main {
 .lt { position: relative; display: inline-block; font-family: "Knewave", "Arial Black", sans-serif; font-style: normal; font-weight: 400; line-height: 1; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.02em; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 5px var(--navy); text-shadow: 0 3px 0 var(--navy-d), 0 8px 18px rgba(0,20,60,0.35); }
 .lt > .f { display: none; }
 .lt.gold { color: #FFE000; }
-h1 { position: relative; margin: 0 0 8px; font-weight: 400; font-style: normal; line-height: 1.02; }
+h1 { position: relative; margin: 0 0 30px; font-weight: 400; font-style: normal; line-height: 1.02; }
 h1 .lt { font-size: clamp(17px, 5.1vw, 21px); -webkit-text-stroke: 3.5px var(--navy); text-shadow: 0 2px 0 var(--navy-d), 0 6px 14px rgba(0,20,60,0.3); }
 /* Small orange label, like the game's "STADIUM HARBOR BEST". */
 .label { display: block; margin: 0 0 26px; font-family: "Knewave", "Arial Black", sans-serif; font-style: normal; font-weight: 400; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 3px var(--navy); text-shadow: 0 2px 0 var(--navy-d); }
@@ -92,7 +92,7 @@ a.cap:active { transform: translateY(5px); filter: brightness(0.93); box-shadow:
 /* Sparkles, like the logo's star. */
 .spk { position: absolute; width: 22px; height: 22px; animation: twk 2.4s ease-in-out infinite; pointer-events: none; }
 @keyframes twk { 0%, 70%, 100% { opacity: 1; } 80% { opacity: 0.35; } }
-footer { position: relative; z-index: 1; font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-style: italic; font-weight: 800; font-size: 13px; padding: 10px 16px calc(26px + env(safe-area-inset-bottom, 0px)); text-align: center; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 2.5px var(--ink); }
+footer { position: relative; z-index: 1; margin-top: 44px; font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-style: italic; font-weight: 800; font-size: 13px; padding: 10px 16px calc(26px + env(safe-area-inset-bottom, 0px)); text-align: center; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 2.5px var(--ink); }
 footer a { color: #fff; }
 /* Wide windows: the logo stays on the water left of center, the words and buttons stand to its right. */
 @media (min-aspect-ratio: 11/10) and (min-width: 900px) {
@@ -103,7 +103,7 @@ footer a { color: #fff; }
   footer { position: fixed; left: 0; right: 0; bottom: 0; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
 }
 /* Tall enough screens keep the footer on the bottom edge. */
-@media (min-height: 760px) { footer { position: fixed; left: 0; right: 0; bottom: 0; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); } }
+@media (min-height: 760px) { main { padding-bottom: 96px; } footer { position: fixed; left: 0; right: 0; bottom: 0; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); } }
 @media (prefers-reduced-motion: reduce) { .water video { display: none; } .cap .in::after, .spk { animation: none; } }
 </style>
 </head>
@@ -114,7 +114,6 @@ footer a { color: #fff; }
 </div>
 <main>
   <h1 aria-label="TurboTide. Hit the throttle like it's 2001."><span class="lt">Hit the throttle like it's 2001</span></h1>
-  <span class="label">Out now on iPhone</span>
 
   <a class="cap" id="ios" href="https://apps.apple.com/app/id6816707770">
     <span class="in"></span>
