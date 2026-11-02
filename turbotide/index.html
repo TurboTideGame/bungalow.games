@@ -22,6 +22,7 @@
 @font-face { font-family: "Knewave"; src: url("fonts/Knewave-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: block; }
 @font-face { font-family: "Saira"; src: url("fonts/Saira-BlackItalic.ttf") format("truetype"); font-weight: 900; font-style: italic; font-display: block; }
 @font-face { font-family: "Saira"; src: url("fonts/Saira-ExtraBoldItalic.ttf") format("truetype"); font-weight: 800; font-style: italic; font-display: block; }
+@font-face { font-family: "Kanit"; src: url("fonts/Kanit-ExtraBold.ttf") format("truetype"); font-weight: 800; font-style: normal; font-display: block; }
 :root {
   color-scheme: dark;
   /* The game's menu colors (docs/menus/chrome_tv in the game's repo). */
@@ -53,14 +54,14 @@ main {
   text-align: center;
 }
 /* Big words: the game's UI type (Saira Black Italic), white with a navy edge. */
-.lt { position: relative; display: inline-block; font-family: "Saira", sans-serif; font-style: italic; font-weight: 900; line-height: 1; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.01em; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 5px var(--navy); text-shadow: 0 3px 0 var(--navy-d), 0 8px 18px rgba(0,20,60,0.35); }
+.lt { position: relative; display: inline-block; font-family: "Knewave", "Arial Black", sans-serif; font-style: normal; font-weight: 400; line-height: 1; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.02em; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 5px var(--navy); text-shadow: 0 3px 0 var(--navy-d), 0 8px 18px rgba(0,20,60,0.35); }
 .lt > .f { display: none; }
 .lt.gold { color: #FFE000; }
-h1 { position: relative; margin: 0 0 18px; font-weight: 400; font-style: normal; line-height: 1.02; }
-h1 .lt { font-size: clamp(16px, 4.9vw, 20px); -webkit-text-stroke: 3.5px var(--navy); text-shadow: 0 2px 0 var(--navy-d), 0 6px 14px rgba(0,20,60,0.3); letter-spacing: 0.02em; }
+h1 { position: relative; margin: 0 0 5px; font-weight: 400; font-style: normal; line-height: 1.02; }
+h1 .lt { font-size: clamp(17px, 5.1vw, 21px); -webkit-text-stroke: 3.5px var(--navy); text-shadow: 0 2px 0 var(--navy-d), 0 6px 14px rgba(0,20,60,0.3); }
 /* Small orange label, like the game's "STADIUM HARBOR BEST". */
-.label { display: block; margin: 0 0 12px; font-family: "Saira", sans-serif; font-style: italic; font-weight: 900; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 3px var(--navy); text-shadow: 0 2px 0 var(--navy-d); }
-.label.sec { margin: 22px 0 10px; }
+.label { display: block; margin: 0 0 18px; font-family: "Knewave", "Arial Black", sans-serif; font-style: normal; font-weight: 400; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 3px var(--navy); text-shadow: 0 2px 0 var(--navy-d); }
+.label.sec { margin: 24px 0 12px; }
 /* The game's cap buttons: chrome rim, colored face, ink outline, hard drop shadow; they press in. */
 .cap {
   position: relative; display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -77,10 +78,10 @@ h1 .lt { font-size: clamp(16px, 4.9vw, 20px); -webkit-text-stroke: 3.5px var(--n
 .cap > * { position: relative; }
 .cap .in { position: absolute; }
 /* Button words: plain upright type, so the italic headings stand apart. */
-.cap .lt, .cap .w { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-style: normal; font-weight: 800; letter-spacing: 0.04em; }
-.cap .lt { font-size: 18px; color: var(--ink); -webkit-text-stroke: 0; text-shadow: 0 1px 0 rgba(255,255,255,0.55); }
+.cap .lt, .cap .w { font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-style: normal; font-weight: 800; letter-spacing: 0.03em; }
+.cap .lt { font-size: 19px; color: var(--ink); -webkit-text-stroke: 0; text-shadow: 0 1px 0 rgba(255,255,255,0.55); }
 .cap svg { width: 26px; height: 26px; flex: none; fill: var(--ink); filter: drop-shadow(0 1px 0 rgba(255,255,255,0.6)); }
-.cap .w { font-size: 16px; color: var(--cob); text-transform: uppercase; }
+.cap .w { font-size: 17px; color: var(--cob); text-transform: uppercase; }
 .cap .w small { font-size: 11px; font-weight: 700; color: var(--ink); opacity: 0.75; margin-left: 4px; }
 a.cap:active { transform: translateY(5px); filter: brightness(0.93); box-shadow: 0 0 0 2.5px var(--ink), 0 1px 0 2.5px var(--ink); transition: transform .05s ease-out, filter .05s, box-shadow .05s; }
 .row { display: flex; gap: 14px; }
@@ -91,7 +92,7 @@ a.cap:active { transform: translateY(5px); filter: brightness(0.93); box-shadow:
 /* Sparkles, like the logo's star. */
 .spk { position: absolute; width: 22px; height: 22px; animation: twk 2.4s ease-in-out infinite; pointer-events: none; }
 @keyframes twk { 0%, 70%, 100% { opacity: 1; } 80% { opacity: 0.35; } }
-footer { position: relative; z-index: 1; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-style: normal; font-weight: 600; font-size: 13px; padding: 10px 16px calc(26px + env(safe-area-inset-bottom, 0px)); text-align: center; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 2.5px var(--ink); }
+footer { position: relative; z-index: 1; font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-style: normal; font-weight: 800; font-size: 13px; padding: 10px 16px calc(26px + env(safe-area-inset-bottom, 0px)); text-align: center; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 2.5px var(--ink); }
 footer a { color: #fff; }
 /* Wide windows: the logo stays on the water left of center, the words and buttons stand to its right. */
 @media (min-aspect-ratio: 11/10) and (min-width: 900px) {
