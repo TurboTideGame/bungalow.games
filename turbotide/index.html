@@ -125,15 +125,20 @@ footer a { color: var(--muted); }
 // Nothing is stored and nothing is sent from this page itself.
 (function () {
   var q = new URLSearchParams(location.search);
-  var s = (q.get("s") || q.get("utm_source") || "").toLowerCase().replace(/[^a-z0-9_]/g, "").slice(0, 24) || "direct";
+  var tag = (q.get("s") || q.get("utm_source") || "").toLowerCase().replace(/[^a-z0-9_]/g, "").slice(0, 24);
+  // The campaign name each tag maps to (the bios use ?s=tiktok and ?s=ig).
+  var NAMES = { tiktok: "tiktok", ig: "instagram", instagram: "instagram" };
+  var s = NAMES[tag] || tag || "bungalow_page";
   // Apple: App Store Connect > App Analytics > campaign links. PT is the
-  // team's provider token from any link made there; the campaign name is
-  // the tag, so App Analytics lists tiktok_bio, ig_bio ... by name.
-  var PT = "";
+  // team's provider token (the same in every link made there); the campaign
+  // name is the tag, so Analytics > Acquisition > Campaigns lists tiktok,
+  // instagram and bungalow_page by name once each has 5 or more installs.
+  var PT = "128362562";
   var ios = document.getElementById("ios");
-  if (PT) ios.href = "https://apps.apple.com/app/apple-store/id6816707770?pt=" + PT + "&ct=" + s + "_bio&mt=8";
-  // Google Play: the listing once it is public ("" = not out yet). The
-  // referrer tag shows in Play Console under acquisition (UTM).
+  if (PT) ios.href = "https://apps.apple.com/app/apple-store/id6816707770?pt=" + PT + "&ct=" + s + "&mt=8";
+  // Google Play: the listing once it is public ("" = not out yet), e.g.
+  // "https://play.google.com/store/apps/details?id=com.bungalowstudios.turbotide".
+  // The referrer tag shows in Play Console under acquisition (UTM).
   var PLAY = "";
   var and = document.getElementById("android"), andSoon = document.getElementById("android-soon");
   if (PLAY) {
