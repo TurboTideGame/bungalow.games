@@ -56,13 +56,10 @@ main {
 .lt { position: relative; display: inline-block; font-family: "Saira", sans-serif; font-style: italic; font-weight: 900; line-height: 1; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.01em; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 5px var(--navy); text-shadow: 0 3px 0 var(--navy-d), 0 8px 18px rgba(0,20,60,0.35); }
 .lt > .f { display: none; }
 .lt.gold { color: #FFE000; }
-h1 { position: relative; margin: 0 0 4px; font-weight: 400; font-style: normal; line-height: 1.02; }
-h1 .lt { font-size: clamp(26px, 7.4vw, 33px); }
-h1 .lt.gold { font-size: clamp(32px, 9.4vw, 42px); margin-top: 0.08em; }
-h1 .line { display: block; }
-.streak { display: block; width: min(50%, 200px); height: 12px; margin: 4px auto 12px; }
+h1 { position: relative; margin: 0 0 18px; font-weight: 400; font-style: normal; line-height: 1.02; }
+h1 .lt { font-size: clamp(16px, 4.9vw, 20px); -webkit-text-stroke: 3.5px var(--navy); text-shadow: 0 2px 0 var(--navy-d), 0 6px 14px rgba(0,20,60,0.3); letter-spacing: 0.02em; }
 /* Small orange label, like the game's "STADIUM HARBOR BEST". */
-.label { display: block; margin: 0 0 10px; font-family: "Saira", sans-serif; font-style: italic; font-weight: 900; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 3px var(--navy); text-shadow: 0 2px 0 var(--navy-d); }
+.label { display: block; margin: 0 0 12px; font-family: "Saira", sans-serif; font-style: italic; font-weight: 900; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 3px var(--navy); text-shadow: 0 2px 0 var(--navy-d); }
 .label.sec { margin: 22px 0 10px; }
 /* The game's cap buttons: chrome rim, colored face, ink outline, hard drop shadow; they press in. */
 .cap {
@@ -99,8 +96,7 @@ footer a { color: #fff; }
   :root { --col: min(400px, 27vw); }
   .water::after { background: linear-gradient(90deg, rgba(5,40,90,0) 55%, rgba(5,40,90,0.3) 72%, rgba(5,40,90,0.42) 100%); }
   main { margin: 0 0 0 70%; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-block: 24px 64px; }
-  h1 .lt { font-size: clamp(26px, 2.3vw, 34px); }
-  h1 .lt.gold { font-size: clamp(32px, 3vw, 44px); }
+  h1 .lt { font-size: clamp(17px, 1.5vw, 22px); }
   footer { position: fixed; left: 0; right: 0; bottom: 0; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
 }
 /* Tall enough screens keep the footer on the bottom edge. */
@@ -114,11 +110,7 @@ footer a { color: #fff; }
   <video id="water" autoplay muted loop playsinline disablepictureinpicture preload="auto"></video>
 </div>
 <main>
-  <h1 aria-label="TurboTide. Hit the throttle like it's 2001.">
-    <span class="line"><span class="lt"><span class="o">HIT THE THROTTLE</span><span class="f" aria-hidden="true">HIT THE THROTTLE</span></span></span>
-    <span class="line"><span class="lt gold"><span class="o">LIKE IT'S 2001</span><span class="f" aria-hidden="true">LIKE IT'S 2001</span></span></span>
-  </h1>
-  <svg class="streak" viewBox="0 0 260 16" aria-hidden="true"><path d="M4 14L259 4L245 16Z" fill="#0B1A4A"/><path d="M2 12L257 2L243 14Z" fill="#FFE000" stroke="#0B1A4A" stroke-width="2" stroke-linejoin="round"/><path d="M109 9.9L245 5" stroke="#FFFBD0" stroke-width="2" stroke-linecap="round"/></svg>
+  <h1 aria-label="TurboTide. Hit the throttle like it's 2001."><span class="lt">Hit the throttle like it's 2001</span></h1>
   <span class="label">Out now on iPhone</span>
 
   <a class="cap" id="ios" href="https://apps.apple.com/app/id6816707770">
