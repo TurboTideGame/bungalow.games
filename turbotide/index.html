@@ -20,12 +20,13 @@
 <style>
 :root {
   color-scheme: dark;
-  --bg: #07131f; --card: #0d1f31; --text: #e6f2fa; --muted: #a3b8cb;
-  --accent: #4cc3ff; --accent2: #00d2c8; --line: rgba(120, 190, 240, 0.25);
+  --bg: #07131f; --card: rgba(6, 22, 38, 0.58); --text: #e6f2fa; --muted: #b7c9d9;
+  --accent: #4cc3ff; --accent2: #00d2c8; --line: rgba(150, 210, 250, 0.3);
   --gold: #f5b200; --gold2: #ffd54a;
-  /* The water band at the top. The logo in the shot is about 78% as wide
-     as the band is tall, so this height sets the logo's size. */
-  --hero: clamp(230px, 34vh, 330px);
+  /* Where the buttons start, below the logo in the water. The tall shot's
+     logo ends 23% down the video, which fills the height on phones and the
+     width on square windows. */
+  --below-logo: max(27vh, 47vw);
 }
 * { box-sizing: border-box; }
 html { background: var(--bg); }
@@ -33,21 +34,23 @@ body {
   margin: 0; min-height: 100vh; color: var(--text); background: var(--bg);
   font: 17px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-/* The rippling water with the logo, the skis driving over it. */
-.hero { position: relative; height: var(--hero); overflow: hidden; background: #27a9e8 url("water_poster.jpg") center 55% / cover no-repeat; }
-.hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
-.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,19,31,0) 62%, rgba(7,19,31,0.55) 86%, var(--bg) 100%); }
-@media (orientation: landscape) { :root { --hero: clamp(260px, 46vh, 440px); } }
-@media (prefers-reduced-motion: reduce) { .hero video { display: none; } }
+/* The rippling water behind the whole page: the logo on it, skis driving over it. */
+.water { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: #27a9e8; }
+.water img, .water video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+/* Darkens the water a little under the buttons, never over the logo. */
+.water::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,19,31,0) 0, rgba(7,19,31,0) calc(var(--below-logo) - 12vh), rgba(7,19,31,0.42) calc(var(--below-logo) + 6vh), rgba(7,19,31,0.55) 100%); }
 main {
-  position: relative; z-index: 1; max-width: 440px; margin: -22px auto 0;
-  padding-block: 0 8px;
+  position: relative; z-index: 1; max-width: 440px; margin: 0 auto;
+  padding-block: var(--below-logo) 8px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
   text-align: center;
 }
 h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0; }
-.tag { color: #fff; margin: 0 0 14px; font-size: 18px; font-weight: 700; letter-spacing: 0.01em; text-shadow: 0 1px 3px rgba(0,20,40,0.7); }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 16px 16px; margin: 0 0 12px; box-shadow: 0 10px 30px rgba(0,10,25,0.35); }
+.tag { color: #fff; margin: 0 0 14px; font-size: 18px; font-weight: 700; letter-spacing: 0.01em; text-shadow: 0 1px 3px rgba(0,20,40,0.8), 0 0 16px rgba(0,30,60,0.6); }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 16px 16px; margin: 0 0 12px;
+  box-shadow: 0 10px 30px rgba(0,10,25,0.35); -webkit-backdrop-filter: blur(12px) saturate(1.2); backdrop-filter: blur(12px) saturate(1.2);
+}
 h2 { margin: 0 0 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
 .btn {
   display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -58,21 +61,29 @@ h2 { margin: 0 0 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: 
 }
 .btn:last-child { margin-bottom: 0; }
 .btn.gold { background: linear-gradient(180deg, var(--gold2), var(--gold)); color: #2a1d00; }
-.btn.soon { background: transparent; color: var(--muted); border: 2px dashed var(--line); box-shadow: none; font-weight: 700; pointer-events: none; padding-block: 11px; }
+.btn.soon { background: rgba(7,19,31,0.25); color: var(--muted); border: 2px dashed var(--line); box-shadow: none; font-weight: 700; pointer-events: none; padding-block: 11px; }
 .btn.soon small { font-weight: 500; opacity: 0.85; }
 .btn svg { width: 22px; height: 22px; flex: none; fill: currentColor; }
 .row { display: flex; gap: 10px; }
-.row .btn { margin: 0; padding: 11px; font-size: 16px; background: transparent; color: var(--accent); border: 2px solid var(--accent); box-shadow: none; }
+.row .btn { margin: 0; padding: 11px; font-size: 16px; background: rgba(7,19,31,0.25); color: #fff; border: 2px solid var(--accent); box-shadow: none; }
 .hide { display: none !important; }
-footer { position: relative; z-index: 1; color: var(--muted); font-size: 14px; padding: 6px 16px calc(28px + env(safe-area-inset-bottom, 0px)); text-align: center; }
-footer a { color: var(--muted); }
+footer { position: relative; z-index: 1; color: var(--muted); font-size: 14px; padding: 6px 16px calc(28px + env(safe-area-inset-bottom, 0px)); text-align: center; text-shadow: 0 1px 2px rgba(0,10,25,0.8); }
+footer a { color: #fff; }
+/* Wide windows: the wide shot, logo on the left, buttons on the right. */
+@media (min-aspect-ratio: 11/10) {
+  :root { --below-logo: 10vh; }
+  .water img, .water video { object-position: 100% 50%; }
+  .water::after { background: linear-gradient(90deg, rgba(7,19,31,0) 45%, rgba(7,19,31,0.45) 70%, rgba(7,19,31,0.55) 100%); }
+  main { margin: 0 4vw 0 auto; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-block: 24px; }
+  footer { position: fixed; left: 0; right: 0; bottom: 0; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) { .water video { display: none; } }
 </style>
 </head>
 <body>
-<div class="hero" aria-hidden="true">
-  <video autoplay muted loop playsinline disablepictureinpicture preload="auto" poster="water_poster.jpg">
-    <source src="water_loop.mp4" type="video/mp4">
-  </video>
+<div class="water" aria-hidden="true">
+  <img id="poster" src="water_tall_poster.jpg" alt="">
+  <video id="water" autoplay muted loop playsinline disablepictureinpicture preload="auto"></video>
 </div>
 <main>
   <h1>TurboTide</h1>
@@ -148,9 +159,16 @@ footer a { color: var(--muted); }
   }
   // Android visitors see the Android button first once it exists.
   if (PLAY && /Android/i.test(navigator.userAgent || "")) ios.parentNode.insertBefore(and, ios);
-  // Phones in Low Power Mode don't autoplay: a tap anywhere starts the water.
-  var v = document.querySelector(".hero video");
-  if (v) document.addEventListener("touchend", function () { if (v.paused) v.play().catch(function () {}); }, { passive: true });
+  // The water: the tall shot on phones and square windows, the wide shot on
+  // wide ones (picked once, when the page opens). The still behind it covers
+  // the moment before the video plays, and phones in Low Power Mode, which
+  // start it on the first tap.
+  var wide = window.matchMedia("(min-aspect-ratio: 11/10)").matches;
+  var v = document.getElementById("water"), poster = document.getElementById("poster");
+  poster.src = wide ? "water_wide_poster.jpg" : "water_tall_poster.jpg";
+  v.poster = poster.src;
+  v.src = wide ? "water_wide.mp4" : "water_tall.mp4";
+  document.addEventListener("touchend", function () { if (v.paused) v.play().catch(function () {}); }, { passive: true });
 })();
 </script>
 </body>
