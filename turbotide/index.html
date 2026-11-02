@@ -76,10 +76,12 @@ h1 .lt { font-size: clamp(16px, 4.9vw, 20px); -webkit-text-stroke: 3.5px var(--n
 .cap.wh .in::after { display: none; }
 .cap > * { position: relative; }
 .cap .in { position: absolute; }
-.cap .lt { font-size: 19px; color: var(--ink); -webkit-text-stroke: 0; text-shadow: 0 1px 0 rgba(255,255,255,0.55); letter-spacing: 0.03em; }
+/* Button words: plain upright type, so the italic headings stand apart. */
+.cap .lt, .cap .w { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-style: normal; font-weight: 800; letter-spacing: 0.04em; }
+.cap .lt { font-size: 18px; color: var(--ink); -webkit-text-stroke: 0; text-shadow: 0 1px 0 rgba(255,255,255,0.55); }
 .cap svg { width: 26px; height: 26px; flex: none; fill: var(--ink); filter: drop-shadow(0 1px 0 rgba(255,255,255,0.6)); }
-.cap .w { font-family: "Saira", sans-serif; font-style: italic; font-weight: 900; font-size: 18px; letter-spacing: 0.02em; color: var(--cob); text-transform: uppercase; }
-.cap .w small { font-size: 12px; font-weight: 800; color: var(--ink); opacity: 0.75; margin-left: 4px; }
+.cap .w { font-size: 16px; color: var(--cob); text-transform: uppercase; }
+.cap .w small { font-size: 11px; font-weight: 700; color: var(--ink); opacity: 0.75; margin-left: 4px; }
 a.cap:active { transform: translateY(5px); filter: brightness(0.93); box-shadow: 0 0 0 2.5px var(--ink), 0 1px 0 2.5px var(--ink); transition: transform .05s ease-out, filter .05s, box-shadow .05s; }
 .row { display: flex; gap: 14px; }
 .row .cap { height: 52px; margin: 0; }
@@ -89,7 +91,7 @@ a.cap:active { transform: translateY(5px); filter: brightness(0.93); box-shadow:
 /* Sparkles, like the logo's star. */
 .spk { position: absolute; width: 22px; height: 22px; animation: twk 2.4s ease-in-out infinite; pointer-events: none; }
 @keyframes twk { 0%, 70%, 100% { opacity: 1; } 80% { opacity: 0.35; } }
-footer { position: relative; z-index: 1; font-size: 13px; padding: 10px 16px calc(26px + env(safe-area-inset-bottom, 0px)); text-align: center; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 2.5px var(--ink); }
+footer { position: relative; z-index: 1; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-style: normal; font-weight: 600; font-size: 13px; padding: 10px 16px calc(26px + env(safe-area-inset-bottom, 0px)); text-align: center; color: #fff; paint-order: stroke fill; -webkit-text-stroke: 2.5px var(--ink); }
 footer a { color: #fff; }
 /* Wide windows: the logo stays on the water left of center, the words and buttons stand to its right. */
 @media (min-aspect-ratio: 11/10) and (min-width: 900px) {
