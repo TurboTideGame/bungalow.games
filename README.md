@@ -7,3 +7,5 @@ Bungalow Studios' site, served by GitHub Pages at https://bungalow.games.
 - `turbotide/fonts/`: the game's fonts, Knewave (headings), Kanit ExtraBold Italic (the HUD font: buttons) and Saira (SIL Open Font License, licenses alongside). The page is drawn in the game's Chrome TV menu style (`docs/menus/chrome_tv/README.md` in the game's repo): logo lettering for the big words, chrome cap buttons that press in, orange labels.
 - `index.html` (root): sends visitors to `/turbotide/`, keeping the `?s=` tag. It becomes the studio page when a second game arrives (each game in its own folder).
 - `CNAME`: the custom domain for GitHub Pages. Keep it.
+
+Counting (Nov 2, Alex's ask): the page loads PostHog (project TurboTide, same key as the game) cookieless: persistence in memory, no autocapture, no recording; it sends `$pageview` and `bio_cta_tap` {button: ios|android|steam|tiktok|instagram, href} with super properties site, page, source (tiktok | instagram | bungalow_page), tagged. A page with visits but no taps is the page's problem. Ad blockers hide some visitors. The privacy policy's website paragraph covers it.

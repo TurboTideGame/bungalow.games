@@ -137,17 +137,19 @@ footer a { color: #fff; }
 
   <span class="label sec">Follow the racing</span>
   <div class="row">
-    <a class="cap wh" href="https://www.tiktok.com/@turbotidegame"><span class="in"></span><span class="w">TikTok</span></a>
-    <a class="cap wh" href="https://www.instagram.com/turbotidegame/"><span class="in"></span><span class="w">Instagram</span></a>
+    <a class="cap wh" id="tiktok" href="https://www.tiktok.com/@turbotidegame"><span class="in"></span><span class="w">TikTok</span></a>
+    <a class="cap wh" id="instagram" href="https://www.instagram.com/turbotidegame/"><span class="in"></span><span class="w">Instagram</span></a>
   </div>
 </main>
 <footer>
   &copy; 2026 Bungalow Studios LLC &middot; <a href="https://turbotidegame.github.io/support.html">Support</a> &middot; <a href="https://turbotidegame.github.io/privacy.html">Privacy</a>
 </footer>
+<script src="https://us-assets.i.posthog.com/static/array.js"></script>
 <script>
 // The one link for every bio. The page works out where the visitor came
 // from and hands them a store link that says so, so each store can report
-// downloads by source. Nothing is stored and nothing is sent from this page.
+// downloads by source. The page stores nothing; it sends PostHog one
+// cookieless "opened" stat and one per button tap, with the source.
 (function () {
   var q = new URLSearchParams(location.search);
   var tag = (q.get("s") || q.get("utm_source") || "").toLowerCase().replace(/[^a-z0-9_]/g, "").slice(0, 24);
@@ -193,6 +195,25 @@ footer a { color: #fff; }
   v.poster = "water_portrait_poster.jpg";
   v.src = "water_portrait.mp4";
   document.addEventListener("touchend", function () { if (v.paused) v.play().catch(function () {}); }, { passive: true });
+  // Counting, cookieless: one "page opened" stat and one per button tap, each with
+  // the source, so a page that gets visits but no taps shows up as the problem.
+  // No cookie, no stored ID (persistence in memory only), no recording, no autocapture.
+  try {
+    var ph = window.posthog;
+    if (ph && ph.init) {
+      ph.init("phc_reYXaB4kResiyTE7s7Ttbm7eAmt8p3fAHnD3jaX4UqLV", {
+        api_host: "https://us.i.posthog.com", persistence: "memory", person_profiles: "identified_only",
+        autocapture: false, capture_pageview: false, capture_pageleave: false,
+        disable_session_recording: true, disable_surveys: true, disable_compression: false
+      });
+      ph.register({ site: "bungalow.games", page: "turbotide", source: s, tagged: !!tag });
+      ph.capture("$pageview");
+      var caps = document.querySelectorAll("a.cap");
+      for (var i = 0; i < caps.length; i++) caps[i].addEventListener("click", function (e) {
+        ph.capture("bio_cta_tap", { button: e.currentTarget.id || "", href: e.currentTarget.href || "" }, { transport: "sendBeacon" });
+      });
+    }
+  } catch (err) {}
 })();
 </script>
 </body>
