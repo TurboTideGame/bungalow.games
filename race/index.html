@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Race my ghost in TurboTide</title>
+<meta name="description" content="Can you beat my time? Tap to race my ghost in TurboTide.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TurboTide">
+<meta property="og:title" content="Race my ghost in TurboTide">
+<meta property="og:description" content="Can you beat my time? Tap to race my ghost.">
+<meta property="og:image" content="https://bungalow.games/race/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>
+// A CHALLENGE A FRIEND link. With TurboTide on the phone this page never
+// shows: the link opens the game (iPhone: universal link, this folder in
+// .well-known/apple-app-site-association; Android: app link). Without it, the
+// friend goes straight to the store for their phone (Alex 2026-10-31: no
+// website in between); the moment the browser shows is a TurboTide splash.
+// The run rides after "#", which never reaches a server.
+(function () {
+  var APP_STORE = "https://apps.apple.com/app/id6816707770";
+  // Google Play's listing, once it's public ("" = Android isn't out yet).
+  var PLAY_STORE = "";
+  var android = /Android/i.test(navigator.userAgent || "");
+  if (android && !PLAY_STORE) {
+    document.documentElement.className = "soon";
+    return;
+  }
+  location.replace(android ? PLAY_STORE : APP_STORE);
+})();
+</script>
+<style>
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+html { background: #0077c8; }
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #00b4d8, #0077c8);
+  color: #fff;
+  font: 600 17px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  text-align: center;
+  padding: 16px;
+}
+img { width: min(70vw, 300px); height: auto; }
+p { margin: 18px 0 0; opacity: 0.9; }
+.later { display: none; }
+.soon .now { display: none; }
+.soon .later { display: block; }
+</style>
+</head>
+<body>
+<img src="logo.png" alt="TurboTide">
+<p class="now">Opening the App Store&hellip;</p>
+<p class="later">Coming soon to Android.</p>
+</body>
+</html>
