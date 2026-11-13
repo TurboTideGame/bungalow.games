@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["C9CMMHZPVS.com.alexduran.jetskigame"],
+        "components": [
+          { "/": "/race/*", "comment": "Race my ghost links (CHALLENGE A FRIEND)" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.bungalowstudios.turbotide",
+      "sha256_cert_fingerprints": [
+        "ED:41:B1:A9:E1:CF:E0:37:3F:F9:49:D6:84:CF:5F:2C:06:A8:92:34:78:40:4D:1E:DE:2D:18:66:99:CF:E4:93"
+      ]
+    }
+  }
+]

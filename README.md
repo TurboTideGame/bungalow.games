@@ -9,3 +9,6 @@ Bungalow Studios' site, served by GitHub Pages at https://bungalow.games.
 - `CNAME`: the custom domain for GitHub Pages. Keep it.
 
 Counting (Nov 2, Alex's ask): the page loads PostHog (project TurboTide, same key as the game) cookieless: persistence in memory, no autocapture, no recording; it sends `$pageview` and `bio_cta_tap` {button: ios|android|steam|tiktok|instagram, href} with super properties site, page, source (tiktok | instagram | bungalow_page), tagged. A page with visits but no taps is the page's problem. Ad blockers hide some visitors. The privacy policy's website paragraph covers it.
+
+- `race/` (Nov 13 2026, Alex: ghost links live on the studio's site): the page a TurboTide "race my ghost" link opens (`https://bungalow.games/race/#<run>`). A phone with the game opens the game instead; without it the page sends the friend to their store (`PLAY_STORE` in its script is empty until the Android game is public).
+- `.well-known/apple-app-site-association` (iPhone) and `.well-known/assetlinks.json` (Android, the Play app-signing key's fingerprint): they let /race/ links open the game. Never delete or rename them. `.nojekyll` makes GitHub Pages serve that folder.
