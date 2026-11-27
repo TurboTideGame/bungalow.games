@@ -6,13 +6,13 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0a86d2">
 <title>Play TurboTide</title>
-<meta name="description" content="TurboTide: retro arcade watercraft racing. Hit the throttle like it's 2001. Out now on iPhone; Android and Steam are on the way.">
+<meta name="description" content="TurboTide: retro arcade watercraft racing. Hit the throttle like it's 2001. Out now on iPhone and Android; Steam is on the way.">
 <link rel="canonical" href="https://bungalow.games/turbotide/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bungalow Studios">
 <meta property="og:url" content="https://bungalow.games/turbotide/">
 <meta property="og:title" content="Play TurboTide">
-<meta property="og:description" content="Hit the throttle like it's 2001. Retro arcade watercraft racing, out now on iPhone.">
+<meta property="og:description" content="Hit the throttle like it's 2001. Retro arcade watercraft racing, out now on iPhone and Android.">
 <meta property="og:image" content="https://turbotidegame.github.io/race/preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -172,7 +172,7 @@ footer a { color: #fff; }
   // Google Play: the listing once it is public ("" = not out yet), e.g.
   // "https://play.google.com/store/apps/details?id=com.bungalowstudios.turbotide".
   // The referrer tag shows in Play Console under acquisition (UTM).
-  var PLAY = "";
+  var PLAY = "https://play.google.com/store/apps/details?id=com.bungalowstudios.turbotide";
   var and = document.getElementById("android"), andSoon = document.getElementById("android-soon");
   if (PLAY) {
     and.href = PLAY + (PLAY.indexOf("?") < 0 ? "?" : "&") + "referrer=" + encodeURIComponent("utm_source=" + s + "&utm_medium=bio");
